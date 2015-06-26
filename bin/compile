@@ -256,20 +256,20 @@ set-default-env PYTHONPATH /app/
 puts-step "Installing Python-Sphinx"
 pip install sphinx
 
-for (( i = 1; i <= $SPHINX_PATH_NO_OF_DOCS; i++ ))
-do
-  eval "COPY_FROM=\$SPHINX_PATH_${i}_COPY_FROM"
-  eval "COPY_TO=\$SPHINX_PATH_${i}_COPY_TO"
-  eval "BUILD_PATH=\$SPHINX_PATH_${i}_BUILD_PATH"
-  if [[ -z ${BUILD_PATH} ]];
-    then BUILD_PATH='build/html/';
-  fi
-  cd $BUILD_DIR/${COPY_FROM}
-  make html
-
-  puts-step "copying html in to static_html/${COPY_TO}"
-  mv ${BUILD_PATH}* ${COPY_TO}
-done
+#for (( i = 1; i <= $SPHINX_PATH_NO_OF_DOCS; i++ ))
+#do
+#  eval "COPY_FROM=\$SPHINX_PATH_${i}_COPY_FROM"
+#  eval "COPY_TO=\$SPHINX_PATH_${i}_COPY_TO"
+#  eval "BUILD_PATH=\$SPHINX_PATH_${i}_BUILD_PATH"
+#  if [[ -z ${BUILD_PATH} ]];
+#    then BUILD_PATH='build/html/';
+#  fi
+#  cd $BUILD_DIR/${COPY_FROM}
+#  make html
+#
+#  puts-step "copying html in to static_html/${COPY_TO}"
+#  mv ${BUILD_PATH}* ${COPY_TO}
+#done
 # Custom code for sphinx
 
 cd $BUILD_DIR
